@@ -20,13 +20,14 @@ repos:
       - id: check-toml
       - id: check-xml
       - id: destroyed-symlinks
-      # -   id: detect-aws-credentials
-      # - id: detect-private-key
-      - id: pretty-format-json
-        exclude: tsconfig.json
-        args: [--autofix, --no-sort-keys]
-        # https://github.com/google/yamlfmt/blob/main/docs/pre-commit.md
+        # -   id: detect-aws-credentials
+        # - id: detect-private-key
+        # - id: pretty-format-json
+        #  exclude: tsconfig.json
+        #  args: [--autofix, --no-sort-keys]
   - repo: https://github.com/google/yamlfmt
+    # https://github.com/google/yamlfmt/blob/main/docs/pre-commit.md
+
     rev: v0.17.2
     hooks:
       - id: yamlfmt
