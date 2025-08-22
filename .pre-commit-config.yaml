@@ -1,14 +1,36 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v6.0.0
-  hooks:
-  - id: trailing-whitespace
-  - id: end-of-file-fixer
-  - id: check-yaml
-  # - id: check-added-large-files
-- repo: https://github.com/kynan/nbstripout
-  rev: 0.8.1
-  hooks:
-  - id: nbstripout
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      # - id: check-added-large-files
+      - id: check-added-large-files
+        args: [--maxkb=1200]
+      - id: check-executables-have-shebangs
+      - id: check-illegal-windows-names
+      - id: check-json
+        exclude: tsconfig.json
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-xml
+      - id: destroyed-symlinks
+      # -   id: detect-aws-credentials
+      # - id: detect-private-key
+      - id: pretty-format-json
+        exclude: tsconfig.json
+        args: [--autofix, --no-sort-keys]
+        # https://github.com/google/yamlfmt/blob/main/docs/pre-commit.md
+  - repo: https://github.com/google/yamlfmt
+    rev: v0.17.2
+    hooks:
+      - id: yamlfmt
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.8.1
+    hooks:
+      - id: nbstripout
